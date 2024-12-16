@@ -1,5 +1,6 @@
 import tsESLintParser from '@typescript-eslint/parser';
 import { RuleTester, RunTests } from '@typescript-eslint/rule-tester';
+import { TSUtils } from '@typescript-eslint/utils';
 
 import { TestingLibraryPluginRuleModule } from '../../lib/utils';
 
@@ -11,8 +12,9 @@ class TestingLibraryRuleTester extends RuleTester {
 	run<TMessageIds extends string, TOptions extends readonly unknown[]>(
 		ruleName: string,
 		rule: TestingLibraryPluginRuleModule<TMessageIds, TOptions>,
-		{ invalid, valid }: RunTests<TMessageIds, TOptions>
+		test: RunTests<TSUtils.NoInfer<TMessageIds>, TSUtils.NoInfer<TOptions>>
 	): void {
+		const { valid, invalid } = test;
 		const finalValid = valid.map((testCase) => {
 			if (typeof testCase === 'string') {
 				return {

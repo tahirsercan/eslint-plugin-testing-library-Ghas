@@ -1,20 +1,22 @@
 {
 	"compilerOptions": {
+		"rootDir": ".",
 		"strict": true,
-		"target": "ES2019",
+		"target": "ES2022",
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
-		"lib": ["ES2019"],
+		"lib": ["ES2023"],
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"resolveJsonModule": true,
 		"moduleDetection": "force",
 		"isolatedModules": true,
 		"removeComments": true,
+		"sourceMap": true,
+		"declaration": true,
+		"declarationMap": true,
 		// TODO: turn it on
-		"noUncheckedIndexedAccess": false,
-		"outDir": "dist",
-		"sourceMap": false
+		"noUncheckedIndexedAccess": false
 	},
-	"include": ["./lib/**/*.ts"]
+	"include": ["lib", "tests", "tools", "*.d.ts"]
 }

@@ -5,6 +5,7 @@ import rules from './rules';
 import { SupportedTestingFramework } from './utils';
 
 // we can't natively import package.json as tsc will copy it into dist/
+// (same as typescript-eslint https://github.com/typescript-eslint/typescript-eslint/blob/7defffef8fe77387a22dbd5a538ff4cafcf81253/packages/eslint-plugin/src/index.ts#L18)
 const {
 	name: packageName,
 	version: packageVersion,
@@ -16,6 +17,7 @@ const plugin = {
 		name: packageName,
 		version: packageVersion,
 	},
+	// TODO: improve this
 	// ugly cast for now to keep TypeScript happy since
 	// we don't have types for flat config yet
 	configs: {} as Record<

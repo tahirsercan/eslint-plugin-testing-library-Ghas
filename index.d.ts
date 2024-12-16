@@ -1,3 +1,9 @@
+/**
+ * Keeping types here instead of generating types from the plugin for the same reasons
+ * as typescript-eslint:
+ * https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/rules.d.ts
+ */
+
 import type { Linter, Rule } from 'eslint';
 
 declare const plugin: {

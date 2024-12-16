@@ -40,7 +40,7 @@ module.exports = {
 			files: ['**/*.ts?(x)'],
 			parser: '@typescript-eslint/parser',
 			parserOptions: {
-				project: './tsconfig.eslint.json',
+				projectService: true,
 				tsconfigRootDir: __dirname,
 			},
 			extends: [
