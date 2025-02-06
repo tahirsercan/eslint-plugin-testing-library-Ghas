@@ -122,23 +122,14 @@ jobs:
             jscpd \
               --min-tokens 30 \
               --threshold 10 \
-              --ignore-identifiers \
+              --max-lines 1000 \
+              --mode "strict" \
+              --format "javascript,typescript,jsx,tsx" \
               --reporters console,json \
               --output ./jscpd-report \
-              --ignore "**/generated/**,**/node_modules/**,**/*.test.js,**/*.spec.js" \
+              --ignore "**/*.test.{js,jsx,ts,tsx},**/*.spec.{js,jsx,ts,tsx},**/node_modules/**,**/dist/**,**/build/**,**/.git/**" \
               $CHANGED_FILES
           else
             echo "No changed files detected. Skipping jscpd."
           fi
-
-      - name: Check duplication threshold
-        if: success() || failure()
-        run: |
-          if [ -f "./jscpd-report/jscpd-report.json" ]; then
-            DUPLICATION=$(jq '.statistics.total.percentage' ./jscpd-report/jscpd-report.json)
-            if (( $(echo "$DUPLICATION > 10" | bc -l) )); then
-              echo "Code duplication percentage ($DUPLICATION%) exceeds threshold (10%)"
-              exit 1
-            fi
-          fi      
           
