@@ -25,3 +25,4 @@ declare const plugin: {
 };
 
 export = plugin;
+ssa
